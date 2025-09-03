@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Symptom Search - SymptomSwap</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="bg-gray-50 min-h-screen font-sans">
+  <div class="flex">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white shadow-md p-4 hidden md:block">
+      <div class="text-teal-600 font-bold text-xl mb-8">SymptomSwap</div>
+      <nav class="space-y-4">
+        <a href="dashboard.html" class="flex items-center text-gray-700 hover:text-teal-600">
+          <span class="material-icons mr-2">dashboard</span> Dashboard
+        </a>
+        <a href="profile.html" class="flex items-center text-gray-700 hover:text-teal-600">
+          <span class="material-icons mr-2">person</span> Profile
+        </a>
+        <a href="health.html" class="flex items-center text-gray-700 hover:text-teal-600">
+          <span class="material-icons mr-2">favorite</span> Health Condition
+        </a>
+        <a href="chat.html" class="flex items-center text-gray-700 hover:text-teal-600">
+          <span class="material-icons mr-2">chat</span> Chat
+        </a>
+        <a href="search.html" class="flex items-center text-teal-600 font-semibold bg-teal-100 rounded px-2 py-1">
+          <span class="material-icons mr-2">search</span> Search
+        </a>
+        <a href="setting.html" class="flex items-center text-gray-700 hover:text-teal-600">
+          <span class="material-icons mr-2">settings</span> Settings
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-6 md:p-10">
+      <h1 class="text-2xl font-semibold mb-6">Search</h1>
+
+      <!-- Search Bar -->
+      <form id="searchForm" class="bg-white rounded-lg shadow p-4 mb-8 flex items-center" role="search">
+        <input 
+          id="searchInput"
+          type="text" 
+          placeholder="Search symptoms, patterns, or connections..." 
+          class="flex-1 border border-gray-300 rounded px-4 py-2 mr-4"
+          aria-label="Search symptoms"
+        />
+        <button 
+          type="submit"
+          class="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded"
+          aria-label="Search"
+        >
+          🔍 <span class="sr-only">Search</span>
+        </button>
+      </form>
+
+      <!-- Empty State / Instruction -->
+      <div class="bg-white rounded-lg shadow p-10 mb-8 text-center text-gray-600">
+        <div class="text-4xl mb-4">🔍</div>
+        <h2 class="text-lg font-semibold mb-2">Search for symptoms or patterns</h2>
+        <p>Find connections based on your health profile and symptoms</p>
+      </div>
+
+      <!-- Popular Searches -->
+      <div class="bg-white rounded-lg shadow p-6">
+        <h2 class="text-xl font-semibold mb-1">Popular Searches</h2>
+        <p class="text-sm text-gray-500 mb-4">Trending symptom patterns in the network</p>
+
+        <div role="list" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div role="listitem" onclick="prefillSearch('Headache + Fatigue + Light Sensitivity')" class="border rounded p-4 cursor-pointer hover:bg-gray-50">
+            <div class="font-medium">Headache + Fatigue + Light Sensitivity</div>
+            <div class="text-sm text-gray-500">312 matches</div>
+          </div>
+          <div role="listitem" onclick="prefillSearch('Joint Pain + Morning Stiffness')" class="border rounded p-4 cursor-pointer hover:bg-gray-50">
+            <div class="font-medium">Joint Pain + Morning Stiffness</div>
+            <div class="text-sm text-gray-500">287 matches</div>
+          </div>
+          <div role="listitem" onclick="prefillSearch('Digestive Issues + Food Intolerances')" class="border rounded p-4 cursor-pointer hover:bg-gray-50">
+            <div class="font-medium">Digestive Issues + Food Intolerances</div>
+            <div class="text-sm text-gray-500">256 matches</div>
+          </div>
+          <div role="listitem" onclick="prefillSearch('Sleep Disorders + Anxiety')" class="border rounded p-4 cursor-pointer hover:bg-gray-50">
+            <div class="font-medium">Sleep Disorders + Anxiety</div>
+            <div class="text-sm text-gray-500">198 matches</div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- JavaScript for functionality -->
+  <script>
+    // Prevent form from refreshing page
+    document.getElementById('searchForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const query = document.getElementById('searchInput').value;
+      alert('Searching for: ' + query);
+    });
+
+    // Fill input from popular search
+    function prefillSearch(text) {
+      document.getElementById('searchInput').value = text;
+      document.getElementById('searchInput').focus();
+    }
+  </script>
+</body>
+</html>
