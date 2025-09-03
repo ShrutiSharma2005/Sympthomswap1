@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Settings - SymptomSwap</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 font-sans">
+
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white shadow-md p-4">
+      <div class="text-teal-600 font-bold text-xl mb-8">SymptomSwap</div>
+      <nav class="space-y-4">
+        <a href="dashboard.html" class="flex items-center text-gray-700 hover:text-teal-600">
+          <span class="material-icons mr-2">dashboard</span> Dashboard
+        </a>
+        <a href="profile.html" class="flex items-center text-gray-700 hover:text-teal-600">
+          <span class="material-icons mr-2">person</span> Profile
+        </a>
+        <a href="health.html" class="flex items-center text-gray-700 hover:text-teal-600">
+          <span class="material-icons mr-2">favorite</span> Health Condition
+        </a>
+        <a href="chat.html" class="flex items-center text-gray-700 hover:text-teal-600">
+          <span class="material-icons mr-2">chat</span> Chat
+        </a>
+        
+        <a href="search.html" class="flex items-center text-gray-700 hover:text-teal-600">
+          <span class="material-icons mr-2">search</span> Search
+        </a>
+        <a href="setting.html" class="flex items-center text-teal-600 font-semibold bg-teal-100 rounded px-2 py-1">
+          <span class="material-icons mr-2">settings</span> Setting
+        
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-8">
+      <h1 class="text-2xl font-bold mb-6">Settings</h1>
+
+      <!-- Tabs -->
+      <div class="flex space-x-4 border-b mb-6">
+        <button class="px-4 py-2 border-b-2 border-teal-500 text-teal-600 font-medium">Privacy</button>
+        
+      </div>
+
+      <!-- Privacy Settings -->
+      <div class="bg-white rounded-lg shadow p-6 space-y-6">
+        <div>
+          <h2 class="text-xl font-semibold mb-2">Privacy Settings</h2>
+          <p class="text-gray-600">Control how your data is shared within the SymptomSwap network</p>
+          <p class="text-sm text-gray-500 mt-1">
+            SymptomSwap uses blockchain technology and advanced encryption to ensure your data remains anonymous. These settings allow you to control what information is shared with the network.
+          </p>
+        </div>
+
+        <!-- Setting Rows -->
+        <div class="space-y-6">
+
+          <!-- Row -->
+          <div class="flex items-center justify-between border-b pb-3">
+            <div>
+              <p class="font-medium">Share symptoms anonymously</p>
+              <p class="text-sm text-gray-500">Allow your symptoms to be matched with others</p>
+            </div>
+            <!-- Toggle -->
+            <label class="inline-flex items-center cursor-pointer">
+              <input type="checkbox" class="sr-only peer" checked>
+              <div class="w-11 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-teal-500 rounded-full peer peer-checked:bg-teal-500 transition-colors duration-300">
+                <span class="inline-block w-5 h-5 bg-white rounded-full shadow transform ring-0 transition-transform duration-300 translate-x-0 peer-checked:translate-x-5"></span>
+              </div>
+            </label>
+          </div>
+
+          <!-- Row -->
+          <div class="flex items-center justify-between border-b pb-3">
+            <div>
+              <p class="font-medium">Participate in research</p>
+              <p class="text-sm text-gray-500">Contribute anonymized data to medical research initiatives</p>
+            </div>
+            <label class="inline-flex items-center cursor-pointer">
+              <input type="checkbox" class="sr-only peer" checked>
+              <div class="w-11 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-teal-500 rounded-full peer peer-checked:bg-teal-500 transition-colors duration-300">
+                <span class="inline-block w-5 h-5 bg-white rounded-full shadow transform ring-0 transition-transform duration-300 translate-x-0 peer-checked:translate-x-5"></span>
+              </div>
+            </label>
+          </div>
+
+          <!-- Row -->
+          <div class="flex items-center justify-between border-b pb-3">
+            <div>
+              <p class="font-medium">Allow contact from matches</p>
+              <p class="text-sm text-gray-500">Let users with matching symptoms message you</p>
+            </div>
+            <label class="inline-flex items-center cursor-pointer">
+              <input type="checkbox" class="sr-only peer" checked>
+              <div class="w-11 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-teal-500 rounded-full peer peer-checked:bg-teal-500 transition-colors duration-300">
+                <span class="inline-block w-5 h-5 bg-white rounded-full shadow transform ring-0 transition-transform duration-300 translate-x-0 peer-checked:translate-x-5"></span>
+              </div>
+            </label>
+          </div>
+
+          <!-- Row -->
+          <div class="flex items-center justify-between pb-3">
+            <div>
+              <p class="font-medium">Public health journey</p>
+              <p class="text-sm text-gray-500">Share your health story with matched users</p>
+            </div>
+            <label class="inline-flex items-center cursor-pointer">
+              <input type="checkbox" class="sr-only peer">
+              <div class="w-11 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-teal-500 rounded-full peer peer-checked:bg-teal-500 transition-colors duration-300">
+                <span class="inline-block w-5 h-5 bg-white rounded-full shadow transform ring-0 transition-transform duration-300 translate-x-0 peer-checked:translate-x-5"></span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Footer Button -->
+        <div class="pt-4">
+          <button class="flex items-center text-teal-600 hover:underline text-sm">
+            <span class="material-icons mr-2">shield</span>
+            View Blockchain Privacy Policy
+          </button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Google Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</body>
+</html>
