@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Health Condition - SymptomSwap</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="bg-gray-50 min-h-screen font-sans">
+  <div class="flex">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white shadow-md p-4">
+      <div class="text-teal-600 font-bold text-xl mb-8">SymptomSwap</div>
+      <nav class="space-y-4">
+        <a href="dashboard.html" class="flex items-center text-gray-700 hover:text-teal-600">
+          <span class="material-icons mr-2">dashboard</span> Dashboard
+        </a>
+        <a href="profile.html" class="flex items-center text-gray-700 hover:text-teal-600">
+          <span class="material-icons mr-2">person</span> Profile
+        </a>
+        <a href="health.html" class="flex items-center text-teal-600 font-semibold bg-teal-100 rounded px-2 py-1">
+          <span class="material-icons mr-2">favorite</span> Health Condition
+        </a>
+        <a href="chat.html" class="flex items-center text-gray-700 hover:text-teal-600">
+          <span class="material-icons mr-2">chat</span> Chat
+        </a>
+        <a href="search.html" class="flex items-center text-gray-700 hover:text-teal-600">
+          <span class="material-icons mr-2">search</span> Search
+        </a>
+        <a href="setting.html" class="flex items-center text-gray-700 hover:text-teal-600">
+          <span class="material-icons mr-2">settings</span> Settings
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-10 overflow-y-auto">
+      <h1 class="text-2xl font-semibold mb-6">Health Condition</h1>
+
+      <!-- Log Symptom Section -->
+      <section class="bg-white p-6 rounded shadow mb-8">
+        <h2 class="text-xl font-semibold mb-1">Log New Symptom</h2>
+        <p class="text-sm text-gray-500 mb-6">Record your symptoms to find patterns and matches</p>
+
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium">Symptom Name</label>
+            <input id="symptomName" type="text" class="w-full mt-1 p-2 border rounded bg-gray-50" placeholder="e.g., Headache, Fatigue" />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium">Severity</label>
+            <select id="symptomSeverity" class="w-full mt-1 p-2 border rounded bg-gray-50">
+              <option value="Low">Low</option>
+              <option value="Medium" selected>Medium</option>
+              <option value="Severe">Severe</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium">Date</label>
+            <input id="symptomDate" type="date" class="w-full mt-1 p-2 border rounded bg-gray-50" />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium">Description</label>
+            <textarea id="symptomDescription" rows="4" class="w-full mt-1 p-2 border rounded bg-gray-50" placeholder="Describe your symptom in detail..."></textarea>
+          </div>
+
+          <button onclick="logSymptom()" class="w-full bg-teal-600 text-white py-2 rounded hover:bg-teal-700">+ Log Symptom</button>
+        </div>
+      </section>
+
+      <!-- Symptom History -->
+      <section class="bg-white p-6 rounded shadow">
+        <h2 class="text-xl font-semibold mb-4">Symptom History</h2>
+
+        <div id="symptomHistory" class="space-y-4">
+          <!-- New symptom entries will be inserted here -->
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // Set today's date
+    document.getElementById('symptomDate').valueAsDate = new Date();
+
+    function getSeverityColor(severity) {
+      if (severity === "Severe") return "bg-red-500 text-white";
+      if (severity === "Medium") return "bg-yellow-300 text-black";
+      return "bg-green-500 text-white";
+    }
+
+    function formatDate(dateStr) {
+      const date = new Date(dateStr);
+      return date.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    }
+
+    function logSymptom() {
+      const name = document.getElementById('symptomName').value.trim();
+      const severity = document.getElementById('symptomSeverity').value;
+      const date = document.getElementById('symptomDate').value;
+      const description = document.getElementById('symptomDescription').value.trim();
+
+      if (!name || !date || !description) {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      const historyDiv = document.getElementById('symptomHistory');
+      const entry = document.createElement('div');
+      entry.className = "border p-4 rounded bg-gray-50";
+
+      entry.innerHTML = `
+        <h3 class="text-lg font-semibold">${name}</h3>
+        <p class="text-sm text-gray-500">${formatDate(date)}</p>
+        <p class="mt-1">Severity: <span class="${getSeverityColor(severity)} px-2 py-1 text-xs rounded">${severity}</span></p>
+        <p class="mt-2 text-gray-700">${description}</p>
+      `;
+
+      historyDiv.prepend(entry); // Add to top of history list
+
+      // Clear form
+      document.getElementById('symptomName').value = '';
+      document.getElementById('symptomSeverity').value = 'Medium';
+      document.getElementById('symptomDate').valueAsDate = new Date();
+      document.getElementById('symptomDescription').value = '';
+    }
+  </script>
+</body>
+</html>
